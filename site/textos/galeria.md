@@ -51,3 +51,5 @@ A Cooperafes constrói seu caminho em rede.
 Aqui aparecem registros de encontros, ações conjuntas e atividades realizadas com parceiros e iniciativas que compartilham os mesmos valores de cooperação, sustentabilidade e desenvolvimento local.
 
 *(As iniciativas parceiras também são apresentadas na página específica de Parcerias.)*
+
+*O campo como lugar de trabalho, saber e pertencimento.*
