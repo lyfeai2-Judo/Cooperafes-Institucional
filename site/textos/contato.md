@@ -1,8 +1,12 @@
-# Contato
+# Contato institucional
 
-Para falar com o Observatório Cultural de Sergipe, utilize os canais abaixo:
+A Cooperafes realiza a comercialização de seus produtos de forma presencial.
 
-- WhatsApp: +55 79 9971-0213  
-- Instagram: https://www.instagram.com/observatorioculturalsergipe/
+Para informações institucionais, parcerias e outros assuntos, entre em contato pelo e-mail:
 
-Estamos abertos a parcerias, diálogos e colaborações.
+📧 cooperafescooperativa@gmail.com
+
+Acompanhe também nossas redes sociais oficiais:
+
+- Facebook: https://www.facebook.com/profile.php?id=61587064174915
+- Instagram: https://www.instagram.com/cooperafescooperativa
