@@ -1,12 +1,9 @@
-# Sobre o Observatório Cultural de Sergipe
+# Quem somos
 
-O Observatório Cultural de Sergipe nasceu com o objetivo de acompanhar,
-organizar e dar visibilidade às ações culturais desenvolvidas no estado.
+A Cooperafes é uma cooperativa da agricultura familiar localizada em Simão Dias, no estado de Sergipe. É formada por agricultores e agricultoras que compartilham o compromisso com a produção responsável, com o trabalho coletivo e com o desenvolvimento sustentável do território.
 
-Nosso foco é:
-- apoiar iniciativas culturais
-- organizar informações e pesquisas
-- fortalecer redes de parceiros
-- contribuir para a preservação da memória cultural sergipana
+Nossa atuação é baseada no cooperativismo, na solidariedade e na valorização dos saberes tradicionais do campo, aliando práticas agroecológicas, respeito ao meio ambiente e fortalecimento da economia local.
 
-Este é um projeto vivo, que cresce de forma gradual e colaborativa.
+A cooperativa tem como propósito criar melhores condições de produção, organização e comercialização para as famílias agricultoras, promovendo inclusão, autonomia e geração de renda, sempre com responsabilidade social.
+
+A Cooperafes acredita que o campo é um espaço de vida, cultura e futuro, e que a agricultura familiar é essencial para a segurança alimentar e para o bem-estar das comunidades.
