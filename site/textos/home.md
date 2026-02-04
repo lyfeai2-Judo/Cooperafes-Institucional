@@ -1,45 +1,45 @@
-# Cooperafes  
-### Cooperativa da Agricultura Familiar de Simão Dias
+# Cooperafes — Cooperativa da Agricultura Familiar de Simão Dias
 
-A Cooperafes é uma cooperativa formada por agricultoras e agricultores familiares de Simão Dias, Sergipe, que se organizam de forma coletiva para produzir alimentos, gerar renda e fortalecer a vida no campo.
+A Cooperafes é uma cooperativa formada por agricultores e agricultoras familiares do município de Simão Dias, em Sergipe, que atuam de forma coletiva na produção de alimentos saudáveis, no fortalecimento da economia local e na valorização do trabalho no campo.
 
-Aqui, a agricultura familiar é valorizada como base da economia local, do cuidado com a terra e da construção de um futuro mais justo para as famílias produtoras e para a comunidade.
-
----
-
-## O que nos move
-
-Produzir alimentos não é apenas um trabalho — é um compromisso com a terra, com as pessoas e com a comunidade.
-
-A Cooperafes nasce da união de famílias que acreditam no cooperativismo como caminho para fortalecer a produção, ampliar oportunidades e garantir mais autonomia para quem vive e trabalha no campo.
-
-Cada alimento carrega história, identidade e responsabilidade social.
+Aqui, a agricultura familiar é mais do que produção: é identidade, cuidado com a terra e compromisso com a comunidade.
 
 ---
 
-## Nossa atuação
+## Produzir juntos é mais forte
 
-Atuamos de forma cooperativa na produção agrícola familiar, valorizando práticas sustentáveis, o respeito aos ciclos naturais e o cuidado com o meio ambiente.
+A Cooperafes nasce da união de famílias agricultoras que escolheram o cooperativismo como caminho para fortalecer a produção, ampliar oportunidades e garantir mais autonomia para quem vive da terra.
 
-Nossa produção é resultado do trabalho coletivo, da troca de saberes tradicionais e do compromisso com uma agricultura que promove saúde, dignidade e desenvolvimento local.
+Acreditamos que produzir alimentos também é produzir saúde, dignidade e futuro.
 
-A comercialização dos produtos é realizada de forma **presencial**, fortalecendo vínculos diretos entre produtores, consumidores e a comunidade.
-
----
-
-## Cooperar é fortalecer
-
-Mais do que produzir alimentos, a Cooperafes fortalece:
-- a agricultura familiar  
-- a economia local  
-- a organização comunitária  
-- a permanência das famílias no campo  
-
-Acreditamos que trabalhar em conjunto é mais forte do que caminhar sozinho.
+Nosso trabalho valoriza práticas sustentáveis, o respeito aos ciclos da natureza e a relação justa entre quem produz e quem consome.
 
 ---
 
-📍 **Simão Dias – Sergipe**  
+## O que fazemos
+
+- Produção agrícola familiar
+- Comercialização de alimentos de forma presencial
+- Fortalecimento da organização comunitária
+- Valorização da economia local
+- Construção coletiva de soluções sustentáveis
+
+Tudo isso feito com base na cooperação, na transparência e no cuidado com as pessoas e o território.
+
+---
+
+## Uma rede que cresce junto
+
+A Cooperafes faz parte de uma rede de iniciativas que acreditam na força da colaboração entre projetos, associações e organizações comunitárias.
+
+Por meio de parcerias e trocas, ampliamos a visibilidade coletiva e fortalecemos quem trabalha pela agricultura familiar e pelo desenvolvimento local.
+
+---
+
+## Quer conhecer mais?
+
+Se você deseja entender melhor o trabalho da Cooperafes, conhecer nossos parceiros ou saber como se aproximar da cooperativa, explore o site e entre em contato.
+
 📧 **cooperafescooperativa@gmail.com**
 
-Conheça nossa história, nossos parceiros e o trabalho das famílias que constroem a Cooperafes todos os dias.
+A Cooperafes está de portas abertas para quem acredita que o campo é lugar de vida, trabalho e futuro.
