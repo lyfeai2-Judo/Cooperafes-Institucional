@@ -43,3 +43,5 @@ Se você deseja entender melhor o trabalho da Cooperafes, conhecer nossos parcei
 📧 **cooperafescooperativa@gmail.com**
 
 A Cooperafes está de portas abertas para quem acredita que o campo é lugar de vida, trabalho e futuro.
+
+Conheça a história da Cooperafes, o trabalho das famílias agricultoras e a rede de parcerias que fortalece a agricultura familiar em Simão Dias.
