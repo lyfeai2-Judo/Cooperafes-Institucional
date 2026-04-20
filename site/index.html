@@ -578,6 +578,143 @@
       .cta h2 { font-size: 26px; }
     }
   </style>
+
+  /* HERO PREMIUM COOPERAFES */
+.hero-premium {
+  position: relative;
+  min-height: 80vh;
+  padding: 120px 24px 80px;
+  background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-medio) 100%);
+  overflow: hidden;
+}
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 50%, rgba(255,255,255,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.hero-text h1 {
+  color: var(--branco);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+.hero-text h1 span { color: #a5d6a7; }
+.hero-text p {
+  color: #c8e6c9;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 8px;
+}
+.hero-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-stat-item strong {
+  color: var(--branco);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+.hero-stat-item span {
+  color: #a5d6a7;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.hero-gallery { display: flex; flex-direction: column; gap: 16px; }
+.hero-gallery-main {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+}
+.hero-gallery-slide { display: none; }
+.hero-gallery-slide-active { display: block; }
+.hero-gallery-slide img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.5s ease;
+}
+.hero-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+.hero-gallery-arrow:hover { background: rgba(0,0,0,0.65); }
+.hero-gallery-arrow-left { left: 12px; }
+.hero-gallery-arrow-right { right: 12px; }
+.hero-gallery-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hero-thumb {
+  background: rgba(255,255,255,0.08);
+  color: #c8e6c9;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+.hero-thumb:hover { background: rgba(255,255,255,0.14); color: white; }
+.hero-thumb-active {
+  background: rgba(255,255,255,0.18);
+  color: white;
+  border-color: rgba(255,255,255,0.3);
+}
+@media (max-width: 900px) {
+  .hero-layout { grid-template-columns: 1fr; gap: 40px; }
+  .hero-gallery-slide img { height: 260px; }
+  .hero-premium { padding-top: 100px; }
+  .hero-text h1 { font-size: 32px; }
+}
+@media (max-width: 600px) {
+  .hero-premium { padding: 96px 20px 64px; }
+  .hero-text h1 { font-size: 26px; }
+  .hero-stats { gap: 14px; }
+  .hero-gallery-thumbs { flex-direction: row; flex-wrap: wrap; }
+  .hero-thumb { font-size: 12px; padding: 6px 10px; }
+}
 </head>
 <body>
 
@@ -605,17 +742,63 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <span class="hero-badge">🌱 Fundada em 2007 · Simão Dias, Sergipe</span>
-      <h1>Alimentação saudável direto<br/><span>da terra para a sua mesa</span></h1>
-      <p>A Cooperafes reúne agricultores e agricultoras familiares que produzem hortaliças, frutas e alimentos orgânicos com responsabilidade ambiental, preço justo e compromisso com a sua saúde.</p>
+  <!-- HERO COOPERAFES PREMIUM -->
+<section class="hero hero-premium">
+  <div class="hero-bg-layer"></div>
+  <div class="hero-inner hero-layout">
+    <div class="hero-text">
+      <span class="hero-badge">🌱 Agricultura familiar · Simão Dias, Sergipe</span>
+      <h1>
+        Alimentação saudável direto<br />
+        <span>da terra para a sua mesa</span>
+      </h1>
+      <p>
+        A Cooperafes reúne agricultores e agricultoras familiares que produzem hortaliças,
+        frutas e alimentos orgânicos com responsabilidade ambiental, preço justo e
+        compromisso com a sua saúde.
+      </p>
       <div class="hero-btns">
         <a href="sobre.html" class="btn-primary">Conheça a Cooperafes</a>
         <a href="contato.html" class="btn-secondary">Fale Conosco</a>
       </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <strong id="stat-familias">0</strong>
+          <span>Famílias agricultoras</span>
+        </div>
+        <div class="hero-stat-item">
+          <strong id="stat-anos">0</strong>
+          <span>Anos de história</span>
+        </div>
+        <div class="hero-stat-item">
+          <strong id="stat-produtos">0</strong>
+          <span>Linhas de produtos</span>
+        </div>
+      </div>
     </div>
-  </section>
+    <div class="hero-gallery">
+      <div class="hero-gallery-main">
+        <div class="hero-gallery-slide hero-gallery-slide-active">
+          <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=900&q=80" alt="Agricultora colhendo hortaliças frescas" />
+        </div>
+        <div class="hero-gallery-slide">
+          <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=900&q=80" alt="Cestas de hortaliças e frutas orgânicas" />
+        </div>
+        <div class="hero-gallery-slide">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&q=80" alt="Ervas medicinais e fitoterápicos" />
+        </div>
+        <button class="hero-gallery-arrow hero-gallery-arrow-left" aria-label="Imagem anterior">‹</button>
+        <button class="hero-gallery-arrow hero-gallery-arrow-right" aria-label="Próxima imagem">›</button>
+      </div>
+      <div class="hero-gallery-thumbs">
+        <button class="hero-thumb hero-thumb-active" data-hero-index="0">🌿 Produção agroecológica</button>
+        <button class="hero-thumb" data-hero-index="1">🧺 Feira e venda direta</button>
+        <button class="hero-thumb" data-hero-index="2">🌱 Ervas medicinais e fitoterápicos</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FIM HERO COOPERAFES PREMIUM -->
 
   <!-- SOBRE -->
   <section class="sobre">
@@ -825,5 +1008,60 @@
     }
   </script>
 
-</body>
+  <script>
+// HERO PREMIUM – slider
+(function () {
+  const slides = Array.from(document.querySelectorAll('.hero-gallery-slide'))
+  const thumbs = Array.from(document.querySelectorAll('.hero-thumb'))
+  const left = document.querySelector('.hero-gallery-arrow-left')
+  const right = document.querySelector('.hero-gallery-arrow-right')
+  if (!slides.length) return
+  let current = 0
+  let intervalId = null
+  function setSlide(index) {
+    current = (index + slides.length) % slides.length
+    slides.forEach((s, i) => s.classList.toggle('hero-gallery-slide-active', i === current))
+    thumbs.forEach((t, i) => t.classList.toggle('hero-thumb-active', i === current))
+  }
+  function next() { setSlide(current + 1) }
+  function prev() { setSlide(current - 1) }
+  function startAuto() { clearInterval(intervalId); intervalId = setInterval(next, 6000) }
+  thumbs.forEach((btn, i) => btn.addEventListener('click', () => { setSlide(i); startAuto() }))
+  if (left) left.addEventListener('click', () => { prev(); startAuto() })
+  if (right) right.addEventListener('click', () => { next(); startAuto() })
+  setSlide(0)
+  startAuto()
+})();
+
+// HERO PREMIUM – contadores
+(function () {
+  const familiasEl = document.getElementById('stat-familias')
+  const anosEl = document.getElementById('stat-anos')
+  const produtosEl = document.getElementById('stat-produtos')
+  if (!familiasEl || !anosEl || !produtosEl) return
+  const targets = { familias: 32, anos: 18, produtos: 15 }
+  const duration = 1600
+  const steps = 60
+  const stepTime = duration / steps
+  const increments = {
+    familias: targets.familias / steps,
+    anos: targets.anos / steps,
+    produtos: targets.produtos / steps,
+  }
+  let current = { familias: 0, anos: 0, produtos: 0 }
+  const timer = setInterval(() => {
+    current.familias = Math.min(targets.familias, current.familias + increments.familias)
+    current.anos = Math.min(targets.anos, current.anos + increments.anos)
+    current.produtos = Math.min(targets.produtos, current.produtos + increments.produtos)
+    familiasEl.textContent = Math.round(current.familias)
+    anosEl.textContent = Math.round(current.anos)
+    produtosEl.textContent = Math.round(current.produtos)
+    if (current.familias >= targets.familias && current.anos >= targets.anos && current.produtos >= targets.produtos) {
+      clearInterval(timer)
+    }
+  }, stepTime)
+})();
+</script>
+
+1000
 </html>
