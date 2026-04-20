@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biblioteca — Cooperafes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --verde-escuro: #1a4a2e;
+      --verde-medio: #2d7a4f;
+      --verde-claro: #4caf50;
+      --verde-suave: #e8f5e9;
+      --branco: #ffffff;
+      --cinza-claro: #f5f5f5;
+      --cinza-texto: #555;
+      --preto-suave: #1a1a1a;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--preto-suave);
+      background: var(--branco);
+    }
+
+    header {
+      background: var(--verde-escuro);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-texto span:first-child {
+      color: var(--branco);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: block;
+    }
+
+    .logo-texto span:last-child {
+      color: #a5d6a7;
+      font-size: 11px;
+      display: block;
+    }
+
+    nav { display: flex; gap: 8px; }
+
+    nav a {
+      color: #c8e6c9;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    nav a:hover, nav a.ativo {
+      color: var(--branco);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--branco);
+      border-radius: 2px;
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-medio) 100%);
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .page-hero-inner { max-width: 700px; margin: 0 auto; }
+
+    .breadcrumb {
+      color: #a5d6a7;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .breadcrumb a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: var(--branco); }
+
+    .page-hero h1 {
+      color: var(--branco);
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .page-hero p {
+      color: #c8e6c9;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* SEÇÃO GERAL */
+    .section-tag {
+      display: inline-block;
+      color: var(--verde-medio);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-titulo {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    /* INTRO */
+    .intro {
+      padding: 72px 24px;
+      background: var(--branco);
+    }
+
+    .intro-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .texto-corpo {
+      font-size: 16px;
+      color: var(--cinza-texto);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .destaque-box {
+      background: var(--verde-suave);
+      border-left: 4px solid var(--verde-medio);
+      padding: 20px 24px;
+      border-radius: 0 10px 10px 0;
+      margin-top: 8px;
+    }
+
+    .destaque-box p {
+      color: var(--verde-escuro);
+      font-size: 16px;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .intro-visual {
+      background: var(--verde-suave);
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+
+    .intro-visual .big-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+
+    .intro-visual h3 {
+      font-size: 22px;
+      color: var(--verde-escuro);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .intro-visual p {
+      font-size: 15px;
+      color: var(--verde-medio);
+      line-height: 1.7;
+    }
+
+    /* EM BREVE PRINCIPAL */
+    .em-breve {
+      background: var(--cinza-claro);
+      padding: 80px 24px;
+    }
+
+    .em-breve-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .em-breve-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .em-breve-header p {
+      font-size: 17px;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 12px auto 0;
+    }
+
+    /* CATEGORIAS */
+    .categorias-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .categoria-card {
+      background: var(--branco);
+      border-radius: 14px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      border: 2px solid transparent;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .categoria-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--verde-medio), var(--verde-claro));
+    }
+
+    .categoria-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(45,122,79,0.14);
+      border-color: var(--verde-suave);
+    }
+
+    .categoria-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .categoria-card h3 {
+      font-size: 18px;
+      color: var(--verde-escuro);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .categoria-card p {
+      font-size: 14px;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .status-breve {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    .status-disponivel {
+      background: var(--verde-suave);
+      color: var(--verde-medio);
+    }
+
+    /* AVISO CENTRAL EM BREVE */
+    .aviso-central {
+      background: linear-gradient(135deg, var(--verde-escuro), var(--verde-medio));
+      border-radius: 20px;
+      padding: 56px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .aviso-central::before {
+      content: '📚';
+      position: absolute;
+      font-size: 200px;
+      opacity: 0.05;
+      top: -40px;
+      right: -20px;
+      line-height: 1;
+    }
+
+    .aviso-central h2 {
+      color: var(--branco);
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .aviso-central p {
+      color: #c8e6c9;
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 580px;
+      margin: 0 auto 28px;
+    }
+
+    .aviso-lista {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .aviso-lista li {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--branco);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    .aviso-btn {
+      display: inline-block;
+      background: var(--branco);
+      color: var(--verde-escuro);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .aviso-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+    }
+
+    /* COMO FUNCIONA */
+    .como-funciona {
+      background: var(--branco);
+      padding: 80px 24px;
+    }
+
+    .como-funciona-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cf-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .cf-header p {
+      font-size: 17px;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+      max-width: 580px;
+      margin: 12px auto 0;
+    }
+
+    .cf-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .cf-item {
+      text-align: center;
+      padding: 28px 20px;
+      border: 1px solid #e8e8e8;
+      border-radius: 14px;
+      transition: all 0.2s;
+    }
+
+    .cf-item:hover {
+      border-color: var(--verde-claro);
+      box-shadow: 0 4px 20px rgba(76,175,80,0.1);
+    }
+
+    .cf-numero {
+      width: 52px;
+      height: 52px;
+      background: var(--verde-suave);
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+    }
+
+    .cf-item h4 {
+      font-size: 16px;
+      color: var(--verde-escuro);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .cf-item p {
+      font-size: 14px;
+      color: var(--cinza-texto);
+      line-height: 1.6;
+    }
+
+    /* PARCEIROS CULTURAIS */
+    .parceiros-culturais {
+      background: var(--cinza-claro);
+      padding: 80px 24px;
+    }
+
+    .pc-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pc-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .pc-header p {
+      font-size: 17px;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+      max-width: 580px;
+      margin: 12px auto 0;
+    }
+
+    .pc-box {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .pc-icon-area {
+      text-align: center;
+    }
+
+    .pc-icon-area .big-icon { font-size: 72px; }
+
+    .pc-icon-area h3 {
+      font-size: 20px;
+      color: var(--verde-escuro);
+      font-weight: 700;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    .pc-icon-area p {
+      font-size: 13px;
+      color: var(--verde-medio);
+    }
+
+    .pc-texto h4 {
+      font-size: 18px;
+      color: var(--verde-escuro);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .pc-texto p {
+      font-size: 15px;
+      color: var(--cinza-texto);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .pc-requisitos {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pc-requisitos li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--cinza-texto);
+    }
+
+    .pc-requisitos li::before {
+      content: '✓';
+      color: var(--verde-medio);
+      font-weight: 700;
+      min-width: 18px;
+    }
+
+    /* NOTIFICAÇÃO */
+    .notificacao {
+      background: var(--verde-escuro);
+      padding: 72px 24px;
+      text-align: center;
+    }
+
+    .notificacao-inner { max-width: 640px; margin: 0 auto; }
+
+    .notificacao h2 {
+      color: var(--branco);
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .notificacao p {
+      color: #c8e6c9;
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .notif-email-box {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 28px;
+    }
+
+    .notif-email-box p {
+      color: #a5d6a7;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .notif-email-box a {
+      color: var(--branco);
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .notif-email-box a:hover { color: #a5d6a7; }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      color: var(--branco);
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      color: #c8e6c9;
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+
+    .btn-primary {
+      background: var(--branco);
+      color: var(--verde-escuro);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-block;
+      margin: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--branco);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.5);
+      display: inline-block;
+      margin: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--branco);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0f2d1c;
+      padding: 60px 24px 30px;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      color: #81c784;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .footer-logo-txt {
+      color: var(--branco);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .footer-col h5 {
+      color: var(--branco);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .footer-col a, .footer-col p {
+      display: block;
+      color: #81c784;
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      line-height: 1.6;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--branco); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p { color: #4caf50; font-size: 13px; }
+    .footer-missao { color: #4caf50; font-size: 13px; font-style: italic; }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      .intro-inner { grid-template-columns: 1fr; gap: 36px; }
+      .categorias-grid { grid-template-columns: 1fr; }
+      .cf-grid { grid-template-columns: repeat(2, 1fr); }
+      .pc-box { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .page-hero h1 { font-size: 30px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+      nav.aberto {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; left: 0; right: 0;
+        background: var(--verde-escuro);
+        padding: 16px;
+      }
+      .menu-toggle { display: flex; }
+      .cf-grid { grid-template-columns: 1fr; }
+      .aviso-central { padding: 40px 24px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .section-titulo { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-area">
+        <div class="logo-texto">
+          <span>COOPERAFES</span>
+          <span>Simão Dias — Sergipe</span>
+        </div>
+      </a>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="parceiros.html">Parceiros</a>
+        <a href="livros.html" class="ativo">Livros</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="breadcrumb"><a href="index.html">Início</a> → Biblioteca</p>
+      <h1>Biblioteca de Livros e Materiais</h1>
+      <p>Publicações, materiais digitais e conteúdos cedidos por parceiros culturais, com autorização prévia, para facilitar o acesso ao conhecimento sobre agricultura familiar, sustentabilidade e cooperativismo.</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="intro-inner">
+      <div>
+        <span class="section-tag">Nossa biblioteca</span>
+        <h2 class="section-titulo">Conhecimento que fortalece quem está no campo</h2>
+        <p class="texto-corpo">A Cooperafes acredita que o acesso ao conhecimento é uma ferramenta de transformação. Por isso, esta biblioteca reúne publicações e materiais ligados à agricultura familiar, cooperativismo, sustentabilidade e cultura local.</p>
+        <p class="texto-corpo">Todos os materiais disponibilizados aqui são cedidos com autorização prévia dos autores ou parceiros culturais, respeitando os direitos de quem produz conhecimento.</p>
+        <div class="destaque-box">
+          <p>"O acesso ao conhecimento fortalece a autonomia de quem produz e aprofunda a relação entre o campo e a comunidade."</p>
+        </div>
+      </div>
+      <div class="intro-visual">
+        <div class="big-icon">📚</div>
+        <h3>Biblioteca em construção</h3>
+        <p>Os primeiros materiais estão sendo organizados com cuidado. Em breve esta biblioteca estará disponível com conteúdos relevantes para agricultores, cooperativistas e entusiastas da vida no campo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EM BREVE / CATEGORIAS -->
+  <section class="em-breve">
+    <div class="em-breve-inner">
+      <div class="em-breve-header">
+        <span class="section-tag">Categorias da biblioteca</span>
+        <h2 class="section-titulo">O que você encontrará aqui</h2>
+        <p>Os materiais serão organizados por categorias temáticas, facilitando a navegação e o acesso ao conteúdo de interesse.</p>
+      </div>
+
+      <div class="categorias-grid">
+        <div class="categoria-card">
+          <span class="categoria-icon">🌱</span>
+          <h3>Agricultura Familiar</h3>
+          <p>Publicações sobre práticas agrícolas, manejo sustentável, agroecologia, permacultura e técnicas de produção familiar que respeitam a terra e os ciclos naturais.</p>
+          <span class="status-badge status-breve">⏳ Em breve</span>
+        </div>
+
+        <div class="categoria-card">
+          <span class="categoria-icon">🤝</span>
+          <h3>Cooperativismo e Economia Solidária</h3>
+          <p>Materiais sobre princípios cooperativistas, gestão coletiva, economia solidária e modelos de organização que fortalecem as comunidades agricultoras.</p>
+          <span class="status-badge status-breve">⏳ Em breve</span>
+        </div>
+
+        <div class="categoria-card">
+          <span class="categoria-icon">🌿</span>
+          <h3>Saúde, Alimentação e Plantas Medicinais</h3>
+          <p>Conteúdos sobre alimentação saudável, fitoterápicos, ervas medicinais, bem-estar e a relação entre o que comemos e a nossa saúde.</p>
+          <span class="status-badge status-breve">⏳ Em breve</span>
+        </div>
+
+        <div class="categoria-card">
+          <span class="categoria-icon">♻️</span>
+          <h3>Sustentabilidade e Meio Ambiente</h3>
+          <p>Publicações sobre preservação ambiental, energia sustentável, gestão de recursos naturais e práticas que respeitam os ecossistemas locais.</p>
+          <span class="status-badge status-breve">⏳ Em breve</span>
+        </div>
+
+        <div class="categoria-card">
+          <span class="categoria-icon">🏘️</span>
+          <h3>Desenvolvimento Comunitário</h3>
+          <p>Materiais sobre organização comunitária, fortalecimento de associações, protagonismo rural e desenvolvimento local sustentável.</p>
+          <span class="status-badge status-breve">⏳ Em breve</span>
+        </div>
+
+        <div class="categoria-card">
+          <span class="categoria-icon">📖</span>
+          <h3>Cultura Sergipana</h3>
+          <p>Produções ligadas à identidade cultural de Sergipe, valorizando os saberes tradicionais, a história local e a riqueza cultural do nosso território.</p>
+          <span class="status-badge status-breve">⏳ Em breve</span>
+        </div>
+      </div>
+
+      <div class="aviso-central" style="margin-top: 48px">
+        <h2>Biblioteca em preparação</h2>
+        <p>Estamos organizando com cuidado os primeiros materiais desta biblioteca. Em breve novos conteúdos estarão disponíveis para download gratuito e acesso livre.</p>
+        <ul class="aviso-lista">
+          <li>📘 Livros digitais</li>
+          <li>📄 Cartilhas técnicas</li>
+          <li>📋 Guias práticos</li>
+          <li>🎥 Materiais audiovisuais</li>
+          <li>📊 Publicações institucionais</li>
+        </ul>
+        <a href="contato.html" class="aviso-btn">Indicar um material para a biblioteca</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="como-funciona">
+    <div class="como-funciona-inner">
+      <div class="cf-header">
+        <span class="section-tag">Funcionamento</span>
+        <h2 class="section-titulo">Como a biblioteca funciona</h2>
+        <p>Todos os materiais são disponibilizados com critério, respeito aos direitos autorais e foco na relevância para a agricultura familiar.</p>
+      </div>
+      <div class="cf-grid">
+        <div class="cf-item">
+          <div class="cf-numero">1</div>
+          <h4>Curadoria responsável</h4>
+          <p>Cada material é selecionado com atenção à qualidade e à relevância para a agricultura familiar e cooperativismo.</p>
+        </div>
+        <div class="cf-item">
+          <div class="cf-numero">2</div>
+          <h4>Autorização prévia</h4>
+          <p>Nenhum material é publicado sem a autorização dos autores ou dos parceiros culturais que os cederam.</p>
+        </div>
+        <div class="cf-item">
+          <div class="cf-numero">3</div>
+          <h4>Acesso gratuito</h4>
+          <p>Todos os conteúdos disponíveis na biblioteca são de acesso livre e gratuito, sem necessidade de cadastro.</p>
+        </div>
+        <div class="cf-item">
+          <div class="cf-numero">4</div>
+          <h4>Atualização contínua</h4>
+          <p>A biblioteca é atualizada à medida que novos materiais são autorizados e organizados pelos parceiros culturais.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEIROS CULTURAIS -->
+  <section class="parceiros-culturais">
+    <div class="pc-inner">
+      <div class="pc-header">
+        <span class="section-tag">Contribua com a biblioteca</span>
+        <h2 class="section-titulo">Tem um material relevante para compartilhar?</h2>
+        <p>Se você ou sua organização produz conteúdo sobre agricultura familiar, cooperativismo, sustentabilidade ou cultura local e deseja disponibilizá-lo aqui, entre em contato.</p>
+      </div>
+      <div class="pc-box">
+        <div class="pc-icon-area">
+          <div class="big-icon">🤝</div>
+          <h3>Parceiros culturais</h3>
+          <p>Autores e organizações que contribuem</p>
+        </div>
+        <div class="pc-texto">
+          <h4>Como funciona a contribuição</h4>
+          <p>A Cooperafes aceita materiais cedidos por parceiros que compartilham dos mesmos valores de cooperação, sustentabilidade e acesso ao conhecimento. A contribuição é voluntária e devidamente creditada.</p>
+          <ul class="pc-requisitos">
+            <li>O material deve ter relevância para a agricultura familiar ou temas correlatos</li>
+            <li>O autor ou organização deve autorizar formalmente a publicação</li>
+            <li>O crédito e a autoria são sempre mantidos e visíveis</li>
+            <li>Não há fins comerciais na disponibilização dos materiais</li>
+            <li>Entre em contato por e-mail para iniciar a conversa</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTIFICAÇÃO -->
+  <section class="notificacao">
+    <div class="notificacao-inner">
+      <h2>Quer saber quando os materiais estiverem disponíveis?</h2>
+      <p>Acompanhe as redes sociais da Cooperafes ou entre em contato por e-mail. Avisaremos assim que os primeiros livros e materiais estiverem prontos para download.</p>
+      <div class="notif-email-box">
+        <p>📧 Entre em contato por e-mail</p>
+        <a href="mailto:cooperafescooperativa@gmail.com">cooperafescooperativa@gmail.com</a>
+      </div>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap">
+        <a href="https://www.instagram.com/cooperafescooperativa" target="_blank" rel="noopener" class="aviso-btn">📸 Seguir no Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61587064174915" target="_blank" rel="noopener" class="aviso-btn" style="background: rgba(255,255,255,0.15); color: var(--branco); box-shadow: none; border: 1px solid rgba(255,255,255,0.3);">📘 Seguir no Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div style="max-width:640px; margin:0 auto">
+      <h2>Explore mais sobre a Cooperafes</h2>
+      <p>Conheça nossa história, os produtos, a galeria e os parceiros que caminham junto com a cooperativa.</p>
+      <a href="sobre.html" class="btn-primary">Nossa história</a>
+      <a href="contato.html" class="btn-secondary">Entrar em contato</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-txt">COOPERAFES</div>
+          <p>Cooperativa da Agricultura Familiar e Economia Solidária do Município de Simão Dias — produzindo alimentos saudáveis desde 2007 com cooperação, sustentabilidade e respeito à terra.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre nós</a>
+          <a href="galeria.html">Galeria</a>
+          <a href="parceiros.html">Parceiros</a>
+          <a href="livros.html">Livros</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contato</h5>
+          <p>📧 cooperafescooperativa@gmail.com</p>
+          <p>📞 (79) 99672-2419</p>
+          <p>📍 Travessa Coronel Loyola, 76 — Simão Dias, SE</p>
+          <p>🕐 Dom a Sáb · 08h às 17h</p>
+        </div>
+        <div class="footer-col">
+          <h5>Redes Sociais</h5>
+          <a href="https://www.facebook.com/profile.php?id=61587064174915" target="_blank" rel="noopener">📘 Facebook</a>
+          <a href="https://www.instagram.com/cooperafescooperativa" target="_blank" rel="noopener">📸 Instagram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Cooperafes — Todos os direitos reservados</p>
+        <p class="footer-missao">"Viver bem e com saúde"</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('aberto');
+    }
+  </script>
+
+</body>
+</html>
