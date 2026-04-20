@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parceiros — Cooperafes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --verde-escuro: #1a4a2e;
+      --verde-medio: #2d7a4f;
+      --verde-claro: #4caf50;
+      --verde-suave: #e8f5e9;
+      --branco: #ffffff;
+      --cinza-claro: #f5f5f5;
+      --cinza-texto: #555;
+      --preto-suave: #1a1a1a;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--preto-suave);
+      background: var(--branco);
+    }
+
+    header {
+      background: var(--verde-escuro);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-texto span:first-child {
+      color: var(--branco);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: block;
+    }
+
+    .logo-texto span:last-child {
+      color: #a5d6a7;
+      font-size: 11px;
+      display: block;
+    }
+
+    nav { display: flex; gap: 8px; }
+
+    nav a {
+      color: #c8e6c9;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    nav a:hover, nav a.ativo {
+      color: var(--branco);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--branco);
+      border-radius: 2px;
+    }
+
+    .page-hero {
+      background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-medio) 100%);
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .page-hero-inner { max-width: 700px; margin: 0 auto; }
+
+    .breadcrumb {
+      color: #a5d6a7;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .breadcrumb a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: var(--branco); }
+
+    .page-hero h1 {
+      color: var(--branco);
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .page-hero p {
+      color: #c8e6c9;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* INTRO */
+    .intro {
+      padding: 72px 24px;
+      background: var(--branco);
+    }
+
+    .intro-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .section-tag {
+      display: inline-block;
+      color: var(--verde-medio);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-titulo {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .texto-corpo {
+      font-size: 16px;
+      color: var(--cinza-texto);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .valores-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .valores-lista li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--cinza-texto);
+    }
+
+    .valores-lista li span:first-child {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: var(--verde-suave);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .intro-visual {
+      background: var(--verde-suave);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .intro-visual .big-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+
+    .intro-visual h3 {
+      font-size: 22px;
+      color: var(--verde-escuro);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .intro-visual p {
+      font-size: 15px;
+      color: var(--verde-medio);
+      line-height: 1.7;
+    }
+
+    /* PARCEIROS PRINCIPAIS */
+    .parceiros-principais {
+      background: var(--cinza-claro);
+      padding: 80px 24px;
+    }
+
+    .parceiros-principais-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .parceiros-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .parceiros-header .section-titulo { font-size: 34px; }
+
+    .parceiros-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .parceiro-card {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parceiro-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--verde-medio), var(--verde-claro));
+    }
+
+    .parceiro-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(45,122,79,0.15);
+      border-color: var(--verde-suave);
+    }
+
+    .parceiro-logo-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--verde-suave);
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      transition: transform 0.3s;
+    }
+
+    .parceiro-card:hover .parceiro-logo-icon {
+      transform: scale(1.1);
+    }
+
+    .parceiro-card h3 {
+      font-size: 20px;
+      color: var(--verde-escuro);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .parceiro-tipo {
+      display: inline-block;
+      background: var(--verde-suave);
+      color: var(--verde-medio);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .parceiro-card p {
+      font-size: 15px;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .parceiro-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--verde-medio);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .parceiro-link:hover { color: var(--verde-escuro); }
+
+    .em-breve-tag {
+      display: inline-block;
+      background: #f0f0f0;
+      color: #999;
+      font-size: 12px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-style: italic;
+    }
+
+    /* COMO FUNCIONA */
+    .como-funciona {
+      background: var(--verde-escuro);
+      padding: 80px 24px;
+    }
+
+    .como-funciona-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .como-funciona .section-tag { color: #a5d6a7; }
+    .como-funciona .section-titulo { color: var(--branco); margin-bottom: 12px; }
+
+    .cf-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .cf-header p {
+      color: #c8e6c9;
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cf-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .cf-item {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .cf-item:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .cf-numero {
+      width: 48px;
+      height: 48px;
+      background: var(--verde-claro);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--branco);
+    }
+
+    .cf-item h4 {
+      color: var(--branco);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .cf-item p {
+      color: #a5d6a7;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* REDE AMPLIADA */
+    .rede {
+      background: var(--branco);
+      padding: 80px 24px;
+    }
+
+    .rede-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .rede-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .rede-header p {
+      color: var(--cinza-texto);
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 12px auto 0;
+    }
+
+    .rede-box {
+      background: var(--verde-suave);
+      border-radius: 16px;
+      padding: 48px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .rede-box h3 {
+      font-size: 24px;
+      color: var(--verde-escuro);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .rede-box p {
+      font-size: 16px;
+      color: var(--cinza-texto);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .rede-beneficios {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .rede-beneficios li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--cinza-texto);
+    }
+
+    .rede-beneficios li::before {
+      content: '✓';
+      color: var(--verde-medio);
+      font-weight: 700;
+      min-width: 20px;
+    }
+
+    /* CTA PARCERIA */
+    .cta-parceria {
+      background: var(--cinza-claro);
+      padding: 80px 24px;
+    }
+
+    .cta-parceria-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-parceria h2 {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      margin-bottom: 16px;
+    }
+
+    .cta-parceria p {
+      font-size: 17px;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .cta-email-box {
+      background: var(--branco);
+      border: 2px solid var(--verde-suave);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 28px;
+    }
+
+    .cta-email-box p {
+      font-size: 14px;
+      color: var(--cinza-texto);
+      margin-bottom: 8px;
+    }
+
+    .cta-email-box a {
+      font-size: 20px;
+      color: var(--verde-medio);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .cta-email-box a:hover { color: var(--verde-escuro); }
+
+    /* CTA FINAL */
+    .cta {
+      background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      color: var(--branco);
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      color: #c8e6c9;
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+
+    .btn-primary {
+      background: var(--branco);
+      color: var(--verde-escuro);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-block;
+      margin: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--branco);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.5);
+      display: inline-block;
+      margin: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--branco);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0f2d1c;
+      padding: 60px 24px 30px;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      color: #81c784;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .footer-logo-txt {
+      color: var(--branco);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .footer-col h5 {
+      color: var(--branco);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .footer-col a, .footer-col p {
+      display: block;
+      color: #81c784;
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      line-height: 1.6;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--branco); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p { color: #4caf50; font-size: 13px; }
+    .footer-missao { color: #4caf50; font-size: 13px; font-style: italic; }
+
+    @media (max-width: 900px) {
+      .intro-inner { grid-template-columns: 1fr; gap: 36px; }
+      .parceiros-grid { grid-template-columns: 1fr; }
+      .cf-grid { grid-template-columns: repeat(2, 1fr); }
+      .rede-box { grid-template-columns: 1fr; gap: 28px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .page-hero h1 { font-size: 30px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+      nav.aberto {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; left: 0; right: 0;
+        background: var(--verde-escuro);
+        padding: 16px;
+      }
+      .menu-toggle { display: flex; }
+      .cf-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .section-titulo { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-area">
+        <div class="logo-texto">
+          <span>COOPERAFES</span>
+          <span>Simão Dias — Sergipe</span>
+        </div>
+      </a>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="parceiros.html" class="ativo">Parceiros</a>
+        <a href="livros.html">Livros</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="breadcrumb"><a href="index.html">Início</a> → Parceiros</p>
+      <h1>Rede de Parceiros da Cooperafes</h1>
+      <p>Ninguém constrói sozinho. Conheça as iniciativas e organizações que caminham junto com a Cooperafes fortalecendo a agricultura familiar e a economia solidária.</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="intro-inner">
+      <div>
+        <span class="section-tag">Nossa rede</span>
+        <h2 class="section-titulo">Parceria que é troca, cooperação e construção coletiva</h2>
+        <p class="texto-corpo">A Cooperafes acredita que ninguém constrói sozinho. Por isso, as parcerias que estabelecemos não são apenas apoio institucional — são relações de troca genuína, cooperação e crescimento mútuo.</p>
+        <p class="texto-corpo">Cada parceiro representa um elo que fortalece toda a rede, ampliando o alcance da agricultura familiar e da economia solidária em Sergipe.</p>
+        <ul class="valores-lista">
+          <li><span>🌱</span><span>Agricultura familiar e sustentabilidade</span></li>
+          <li><span>🤝</span><span>Economia solidária e cooperação</span></li>
+          <li><span>👥</span><span>Valorização das pessoas e dos territórios</span></li>
+          <li><span>📈</span><span>Desenvolvimento local e comunitário</span></li>
+        </ul>
+      </div>
+      <div class="intro-visual">
+        <div class="big-icon">🌐</div>
+        <h3>Uma rede que cresce junto</h3>
+        <p>À medida que novas iniciativas se conectam à Cooperafes, a visibilidade coletiva se amplia e todos ganham força sem perder identidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEIROS PRINCIPAIS -->
+  <section class="parceiros-principais">
+    <div class="parceiros-principais-inner">
+      <div class="parceiros-header">
+        <span class="section-tag">Parceiros confirmados</span>
+        <h2 class="section-titulo">Quem caminha junto com a Cooperafes</h2>
+      </div>
+      <div class="parceiros-grid">
+
+        <div class="parceiro-card">
+          <div class="parceiro-logo-icon">🌿</div>
+          <h3>Renovando a Terra</h3>
+          <span class="parceiro-tipo">Agricultura Sustentável</span>
+          <p>Iniciativa parceira focada na agricultura sustentável, na valorização do trabalho no campo e na construção de soluções que respeitam a terra e as pessoas. Compartilha com a Cooperafes os valores de cooperação, cuidado ambiental e compromisso com as comunidades rurais.</p>
+          <span class="em-breve-tag">🔗 Link em breve</span>
+        </div>
+
+        <div class="parceiro-card">
+          <div class="parceiro-logo-icon">🔬</div>
+          <h3>Embrapa</h3>
+          <span class="parceiro-tipo">Pesquisa Agropecuária</span>
+          <p>Empresa Brasileira de Pesquisa Agropecuária, referência nacional em inovação e tecnologia para a agricultura. A Embrapa apoia a Cooperafes com conhecimento técnico, pesquisa aplicada e soluções que fortalecem a produção familiar sustentável.</p>
+          <a href="https://www.embrapa.br" target="_blank" rel="noopener" class="parceiro-link">🌐 Visitar site da Embrapa</a>
+        </div>
+
+        <div class="parceiro-card">
+          <div class="parceiro-logo-icon">🌾</div>
+          <h3>Emdagro</h3>
+          <span class="parceiro-tipo">Desenvolvimento Agropecuário</span>
+          <p>Empresa de Desenvolvimento Agropecuário de Sergipe, parceira estratégica no fortalecimento da produção rural. A Emdagro oferece suporte técnico e assistência aos agricultores familiares da região, contribuindo com a qualidade e a continuidade da produção da Cooperafes.</p>
+          <a href="https://www.emdagro.se.gov.br" target="_blank" rel="noopener" class="parceiro-link">🌐 Visitar site da Emdagro</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="como-funciona">
+    <div class="como-funciona-inner">
+      <div class="cf-header">
+        <span class="section-tag">Transparência</span>
+        <h2 class="section-titulo">Como funciona a parceria</h2>
+        <p>A lógica da parceria com a Cooperafes é simples, transparente e baseada na cooperação mútua.</p>
+      </div>
+      <div class="cf-grid">
+        <div class="cf-item">
+          <div class="cf-numero">1</div>
+          <h4>Visibilidade compartilhada</h4>
+          <p>Os parceiros aparecem nesta página e na galeria institucional, ganhando visibilidade junto ao público da Cooperafes.</p>
+        </div>
+        <div class="cf-item">
+          <div class="cf-numero">2</div>
+          <h4>Marcas em circulação</h4>
+          <p>As marcas dos parceiros circulam entre os sites participantes da rede, ampliando o alcance de todos.</p>
+        </div>
+        <div class="cf-item">
+          <div class="cf-numero">3</div>
+          <h4>Crescimento coletivo</h4>
+          <p>Todos se beneficiam da audiência construída em conjunto, sem que nenhuma iniciativa perca sua identidade.</p>
+        </div>
+        <div class="cf-item">
+          <div class="cf-numero">4</div>
+          <h4>Pequenos ficam maiores</h4>
+          <p>Este modelo permite que pequenos projetos ganhem força e visibilidade sem depender de grandes estruturas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REDE AMPLIADA -->
+  <section class="rede">
+    <div class="rede-inner">
+      <div class="rede-header">
+        <span class="section-tag">Rede em expansão</span>
+        <h2 class="section-titulo">A Cooperafes em rede</h2>
+        <p>À medida que novas iniciativas e projetos se conectam à Cooperafes, seus nomes e marcas passam a integrar esta página, fortalecendo a visibilidade coletiva.</p>
+      </div>
+      <div class="rede-box">
+        <div>
+          <h3>Por que fazer parte desta rede?</h3>
+          <p>A Cooperafes é uma cooperativa com presença consolidada em Simão Dias e região, com histórico de atuação desde 2007 e parcerias com instituições de referência nacional como a Embrapa e a Emdagro.</p>
+          <p>Fazer parte desta rede significa ganhar visibilidade, fortalecer laços e construir junto uma agricultura mais sustentável e solidária.</p>
+        </div>
+        <ul class="rede-beneficios">
+          <li>Presença na página de parceiros do site institucional</li>
+          <li>Inclusão na galeria de parceiros</li>
+          <li>Visibilidade para o público da cooperativa</li>
+          <li>Conexão com instituições de referência</li>
+          <li>Participação em uma rede de economia solidária</li>
+          <li>Construção coletiva de impacto social</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA PARCERIA -->
+  <section class="cta-parceria">
+    <div class="cta-parceria-inner">
+      <span class="section-tag">Junte-se a nós</span>
+      <h2>Quer caminhar junto com a Cooperafes?</h2>
+      <p>Se você representa uma iniciativa alinhada aos valores da Cooperafes e deseja fazer parte desta rede colaborativa, entre em contato. A cooperação começa no diálogo.</p>
+      <div class="cta-email-box">
+        <p>📧 Escreva para nós</p>
+        <a href="mailto:cooperafescooperativa@gmail.com">cooperafescooperativa@gmail.com</a>
+      </div>
+      <a href="contato.html" class="btn-primary" style="background: var(--verde-medio); color: var(--branco);">Ver página de contato completa</a>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div style="max-width:640px; margin:0 auto">
+      <h2>Conheça mais sobre a Cooperafes</h2>
+      <p>Explore o trabalho das famílias agricultoras, a galeria e a história da cooperativa.</p>
+      <a href="sobre.html" class="btn-primary">Nossa história</a>
+      <a href="galeria.html" class="btn-secondary">Ver galeria</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-txt">COOPERAFES</div>
+          <p>Cooperativa da Agricultura Familiar e Economia Solidária do Município de Simão Dias — produzindo alimentos saudáveis desde 2007 com cooperação, sustentabilidade e respeito à terra.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre nós</a>
+          <a href="galeria.html">Galeria</a>
+          <a href="parceiros.html">Parceiros</a>
+          <a href="livros.html">Livros</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contato</h5>
+          <p>📧 cooperafescooperativa@gmail.com</p>
+          <p>📞 (79) 99672-2419</p>
+          <p>📍 Travessa Coronel Loyola, 76 — Simão Dias, SE</p>
+          <p>🕐 Dom a Sáb · 08h às 17h</p>
+        </div>
+        <div class="footer-col">
+          <h5>Redes Sociais</h5>
+          <a href="https://www.facebook.com/profile.php?id=61587064174915" target="_blank" rel="noopener">📘 Facebook</a>
+          <a href="https://www.instagram.com/cooperafescooperativa" target="_blank" rel="noopener">📸 Instagram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Cooperafes — Todos os direitos reservados</p>
+        <p class="footer-missao">"Viver bem e com saúde"</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('aberto');
+    }
+  </script>
+
+</body>
+</html>
