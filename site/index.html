@@ -112,7 +112,7 @@
       border-radius: 2px;
     }
 
-    /* HERO */
+    /* HERO (versão base, ainda usada para algumas classes) */
     .hero {
       background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-medio) 100%);
       padding: 90px 24px;
@@ -295,7 +295,7 @@
       line-height: 1.7;
     }
 
-    /* PRODUTOS */
+    /* PRODUTOS (layout original) */
     .produtos {
       background: var(--cinza-claro);
     }
@@ -362,7 +362,7 @@
       margin-bottom: 10px;
     }
 
-    /* DIFERENCIAIS */
+    /* DIFERENCIAIS (BLOCO ANTIGO, AINDA COM ESTILO PARA OUTRAS PÁGINAS SE QUISER) */
     .diferenciais {
       background: var(--verde-escuro);
     }
@@ -556,7 +556,7 @@
       font-style: italic;
     }
 
-    /* RESPONSIVO */
+    /* RESPONSIVO GERAL */
     @media (max-width: 900px) {
       .sobre-grid { grid-template-columns: 1fr; gap: 36px; }
       .produtos-grid { grid-template-columns: repeat(2, 1fr); }
@@ -568,7 +568,16 @@
 
     @media (max-width: 600px) {
       nav { display: none; }
-      nav.aberto { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--verde-escuro); padding: 16px; }
+      nav.aberto {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--verde-escuro);
+        padding: 16px;
+      }
       .menu-toggle { display: flex; }
       .produtos-grid { grid-template-columns: 1fr; }
       .diferenciais-grid { grid-template-columns: 1fr; }
@@ -578,260 +587,365 @@
       .cta h2 { font-size: 26px; }
     }
 
-  /* HERO PREMIUM COOPERAFES */
-.hero-premium {
-  position: relative;
-  min-height: 80vh;
-  padding: 120px 24px 80px;
-  background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-medio) 100%);
-  overflow: hidden;
-}
-.hero-bg-layer {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 70% 50%, rgba(255,255,255,0.04) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-.hero-text {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.hero-text h1 {
-  color: var(--branco);
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.15;
-}
-.hero-text h1 span { color: #a5d6a7; }
-.hero-text p {
-  color: #c8e6c9;
-  font-size: 17px;
-  line-height: 1.7;
-}
-.hero-stats {
-  display: flex;
-  gap: 32px;
-  margin-top: 8px;
-}
-.hero-stat-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.hero-stat-item strong {
-  color: var(--branco);
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1;
-}
-.hero-stat-item span {
-  color: #a5d6a7;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.hero-gallery { display: flex; flex-direction: column; gap: 16px; }
-.hero-gallery-main {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
-}
-.hero-gallery-slide { display: none; }
-.hero-gallery-slide-active { display: block; }
-.hero-gallery-slide img {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  display: block;
-  transition: opacity 0.5s ease;
-}
-.hero-gallery-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 22px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  z-index: 2;
-}
-.hero-gallery-arrow:hover { background: rgba(0,0,0,0.65); }
-.hero-gallery-arrow-left { left: 12px; }
-.hero-gallery-arrow-right { right: 12px; }
-.hero-gallery-thumbs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.hero-thumb {
-  background: rgba(255,255,255,0.08);
-  color: #c8e6c9;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 8px;
-  padding: 10px 16px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.2s;
-}
-.hero-thumb:hover { background: rgba(255,255,255,0.14); color: white; }
-.hero-thumb-active {
-  background: rgba(255,255,255,0.18);
-  color: white;
-  border-color: rgba(255,255,255,0.3);
-}
-@media (max-width: 900px) {
-  .hero-layout { grid-template-columns: 1fr; gap: 40px; }
-  .hero-gallery-slide img { height: 260px; }
-  .hero-premium { padding-top: 100px; }
-  .hero-text h1 { font-size: 32px; }
-}
-@media (max-width: 600px) {
-  .hero-premium { padding: 96px 20px 64px; }
-  .hero-text h1 { font-size: 26px; }
-  .hero-stats { gap: 14px; }
-  .hero-gallery-thumbs { flex-direction: row; flex-wrap: wrap; }
-  .hero-thumb { font-size: 12px; padding: 6px 10px; }
-}
+    /* HERO PREMIUM COOPERAFES */
+    .hero-premium {
+      position: relative;
+      min-height: 80vh;
+      padding: 120px 24px 80px;
+      background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-medio) 100%);
+      overflow: hidden;
+    }
+    .hero-bg-layer {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 50%, rgba(255,255,255,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .hero-text h1 {
+      color: var(--branco);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    .hero-text h1 span { color: #a5d6a7; }
+    .hero-text p {
+      color: #c8e6c9;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 8px;
+    }
+    .hero-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hero-stat-item strong {
+      color: var(--branco);
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .hero-stat-item span {
+      color: #a5d6a7;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .hero-gallery { display: flex; flex-direction: column; gap: 16px; }
+    .hero-gallery-main {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    }
+    .hero-gallery-slide { display: none; }
+    .hero-gallery-slide-active { display: block; }
+    .hero-gallery-slide img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.5s ease;
+    }
+    .hero-gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .hero-gallery-arrow:hover { background: rgba(0,0,0,0.65); }
+    .hero-gallery-arrow-left { left: 12px; }
+    .hero-gallery-arrow-right { right: 12px; }
+    .hero-gallery-thumbs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .hero-thumb {
+      background: rgba(255,255,255,0.08);
+      color: #c8e6c9;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+    }
+    .hero-thumb:hover { background: rgba(255,255,255,0.14); color: white; }
+    .hero-thumb-active {
+      background: rgba(255,255,255,0.18);
+      color: white;
+      border-color: rgba(255,255,255,0.3);
+    }
+    @media (max-width: 900px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 40px; }
+      .hero-gallery-slide img { height: 260px; }
+      .hero-premium { padding-top: 100px; }
+      .hero-text h1 { font-size: 32px; }
+    }
+    @media (max-width: 600px) {
+      .hero-premium { padding: 96px 20px 64px; }
+      .hero-text h1 { font-size: 26px; }
+      .hero-stats { gap: 14px; }
+      .hero-gallery-thumbs { flex-direction: row; flex-wrap: wrap; }
+      .hero-thumb { font-size: 12px; padding: 6px 10px; }
+    }
+
+    /* SEÇÃO PRODUTOS PREMIUM */
+    .produtos-premium {
+      padding: 96px 24px;
+      background: var(--cinza-claro);
+    }
+    .produtos-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .produtos-premium .produtos-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .produtos-premium .section-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+      margin-bottom: 12px;
+    }
+    .produtos-premium .produtos-header h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .produtos-premium .produtos-header p {
+      font-size: 16px;
+      color: var(--cinza-texto);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .section-divider {
+      width: 56px;
+      height: 4px;
+      background: var(--verde-claro);
+      border-radius: 99px;
+      margin: 24px auto 0;
+    }
+    .produtos-premium .produtos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .produtos-premium .produto-card {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-left: 4px solid transparent;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .produtos-premium .produto-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
+    }
+    .produtos-premium .produto-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      border-left-color: var(--verde-claro);
+    }
+    .produto-icon-wrap {
+      font-size: 36px;
+      width: 64px;
+      height: 64px;
+      background: var(--verde-suave);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .produtos-premium .produto-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+      background: var(--verde-suave);
+      border-radius: 99px;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+    }
+    .produtos-premium .produto-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .produtos-premium .produto-card p {
+      font-size: 14px;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+    @media (max-width: 900px) {
+      .produtos-premium .produtos-grid { grid-template-columns: repeat(2, 1fr); }
+      .produtos-premium .produtos-header h2 { font-size: 28px; }
+    }
+    @media (max-width: 600px) {
+      .produtos-premium .produtos-grid { grid-template-columns: 1fr; }
+      .produtos-premium { padding: 64px 20px; }
+      .produtos-premium .produtos-header h2 { font-size: 24px; }
+    }
+
+    /* ── DIFERENCIAIS PREMIUM ── */
+    .diferenciais-premium {
+      padding: 96px 24px;
+      background: var(--branco);
+    }
+    .diferenciais-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .diferenciais-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .diferenciais-header h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .diferenciais-header p {
+      font-size: 16px;
+      color: var(--cinza-texto);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .diferenciais-premium .section-divider {
+      width: 56px;
+      height: 4px;
+      background: var(--verde-claro);
+      border-radius: 2px;
+      margin: 20px auto 0;
+    }
+    .diferenciais-premium .diferenciais-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-top: 0;
+    }
+    .diferencial-card-premium {
+      background: var(--cinza-claro);
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-left: 4px solid transparent;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .diferencial-card-premium.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease,
+                  box-shadow 0.25s ease, border-left-color 0.25s ease;
+    }
+    .diferencial-card-premium:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      border-left-color: var(--verde-claro);
+    }
+    .diferencial-icon-wrap {
+      font-size: 32px;
+      width: 60px;
+      height: 60px;
+      background: var(--verde-suave);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .diferencial-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+      background: var(--verde-suave);
+      border-radius: 99px;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+    }
+    .diferencial-card-premium h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .diferencial-card-premium p {
+      font-size: 14px;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+    @media (max-width: 1024px) {
+      .diferenciais-premium .diferenciais-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .diferenciais-premium .diferenciais-grid { grid-template-columns: 1fr; }
+      .diferenciais-premium { padding: 64px 20px; }
+      .diferenciais-header h2 { font-size: 26px; }
+    }
   </style>
 </head>
 <body>
-
-
-/* SEÇÃO PRODUTOS PREMIUM */
-.produtos-premium {
-  padding: 96px 24px;
-  background: var(--cinza-claro);
-}
-.produtos-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.produtos-header {
-  text-align: center;
-  margin-bottom: 56px;
-}
-.section-tag {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--verde-medio);
-  margin-bottom: 12px;
-}
-.produtos-header h2 {
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--verde-escuro);
-  margin-bottom: 14px;
-  line-height: 1.2;
-}
-.produtos-header p {
-  font-size: 16px;
-  color: var(--cinza-texto);
-  max-width: 560px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
-.section-divider {
-  width: 56px;
-  height: 4px;
-  background: var(--verde-claro);
-  border-radius: 99px;
-  margin: 24px auto 0;
-}
-.produtos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-.produto-card {
-  background: var(--branco);
-  border-radius: 16px;
-  padding: 32px 28px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  border: 1px solid rgba(0,0,0,0.05);
-  border-left: 4px solid transparent;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
-  opacity: 0;
-  transform: translateY(24px);
-}
-.produto-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
-}
-.produto-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-  border-left-color: var(--verde-claro);
-}
-.produto-icon-wrap {
-  font-size: 36px;
-  width: 64px;
-  height: 64px;
-  background: var(--verde-suave);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-.produto-badge {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--verde-medio);
-  background: var(--verde-suave);
-  border-radius: 99px;
-  padding: 4px 10px;
-  margin-bottom: 12px;
-}
-.produto-card h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--verde-escuro);
-  margin-bottom: 10px;
-  line-height: 1.3;
-}
-.produto-card p {
-  font-size: 14px;
-  color: var(--cinza-texto);
-  line-height: 1.7;
-}
-@media (max-width: 900px) {
-  .produtos-grid { grid-template-columns: repeat(2, 1fr); }
-  .produtos-header h2 { font-size: 28px; }
-}
-@media (max-width: 600px) {
-  .produtos-grid { grid-template-columns: 1fr; }
-  .produtos-premium { padding: 64px 20px; }
-  .produtos-header h2 { font-size: 24px; }
-}
   <!-- HEADER -->
   <header>
     <div class="header-inner">
@@ -855,64 +969,63 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <!-- HERO COOPERAFES PREMIUM -->
-<section class="hero hero-premium">
-  <div class="hero-bg-layer"></div>
-  <div class="hero-inner hero-layout">
-    <div class="hero-text">
-      <span class="hero-badge">🌱 Agricultura familiar · Simão Dias, Sergipe</span>
-      <h1>
-        Alimentação saudável direto<br />
-        <span>da terra para a sua mesa</span>
-      </h1>
-      <p>
-        A Cooperafes reúne agricultores e agricultoras familiares que produzem hortaliças,
-        frutas e alimentos orgânicos com responsabilidade ambiental, preço justo e
-        compromisso com a sua saúde.
-      </p>
-      <div class="hero-btns">
-        <a href="sobre.html" class="btn-primary">Conheça a Cooperafes</a>
-        <a href="contato.html" class="btn-secondary">Fale Conosco</a>
+  <section class="hero hero-premium">
+    <div class="hero-bg-layer"></div>
+    <div class="hero-inner hero-layout">
+      <div class="hero-text">
+        <span class="hero-badge">🌱 Agricultura familiar · Simão Dias, Sergipe</span>
+        <h1>
+          Alimentação saudável direto<br />
+          <span>da terra para a sua mesa</span>
+        </h1>
+        <p>
+          A Cooperafes reúne agricultores e agricultoras familiares que produzem hortaliças,
+          frutas e alimentos orgânicos com responsabilidade ambiental, preço justo e
+          compromisso com a sua saúde.
+        </p>
+        <div class="hero-btns">
+          <a href="sobre.html" class="btn-primary">Conheça a Cooperafes</a>
+          <a href="contato.html" class="btn-secondary">Fale Conosco</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat-item">
+            <strong id="stat-familias">0</strong>
+            <span>Famílias agricultoras</span>
+          </div>
+          <div class="hero-stat-item">
+            <strong id="stat-anos">0</strong>
+            <span>Anos de história</span>
+          </div>
+          <div class="hero-stat-item">
+            <strong id="stat-produtos">0</strong>
+            <span>Linhas de produtos</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat-item">
-          <strong id="stat-familias">0</strong>
-          <span>Famílias agricultoras</span>
+      <div class="hero-gallery">
+        <div class="hero-gallery-main">
+          <div class="hero-gallery-slide hero-gallery-slide-active">
+            <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=900&q=80" alt="Agricultora colhendo hortaliças frescas" />
+          </div>
+          <div class="hero-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=900&q=80" alt="Cestas de hortaliças e frutas orgânicas" />
+          </div>
+          <div class="hero-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&q=80" alt="Ervas medicinais e fitoterápicos" />
+          </div>
+          <button class="hero-gallery-arrow hero-gallery-arrow-left" aria-label="Imagem anterior">‹</button>
+          <button class="hero-gallery-arrow hero-gallery-arrow-right" aria-label="Próxima imagem">›</button>
         </div>
-        <div class="hero-stat-item">
-          <strong id="stat-anos">0</strong>
-          <span>Anos de história</span>
-        </div>
-        <div class="hero-stat-item">
-          <strong id="stat-produtos">0</strong>
-          <span>Linhas de produtos</span>
+        <div class="hero-gallery-thumbs">
+          <button class="hero-thumb hero-thumb-active" data-hero-index="0">🌿 Produção agroecológica</button>
+          <button class="hero-thumb" data-hero-index="1">🧺 Feira e venda direta</button>
+          <button class="hero-thumb" data-hero-index="2">🌱 Ervas medicinais e fitoterápicos</button>
         </div>
       </div>
     </div>
-    <div class="hero-gallery">
-      <div class="hero-gallery-main">
-        <div class="hero-gallery-slide hero-gallery-slide-active">
-          <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=900&q=80" alt="Agricultora colhendo hortaliças frescas" />
-        </div>
-        <div class="hero-gallery-slide">
-          <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=900&q=80" alt="Cestas de hortaliças e frutas orgânicas" />
-        </div>
-        <div class="hero-gallery-slide">
-          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&q=80" alt="Ervas medicinais e fitoterápicos" />
-        </div>
-        <button class="hero-gallery-arrow hero-gallery-arrow-left" aria-label="Imagem anterior">‹</button>
-        <button class="hero-gallery-arrow hero-gallery-arrow-right" aria-label="Próxima imagem">›</button>
-      </div>
-      <div class="hero-gallery-thumbs">
-        <button class="hero-thumb hero-thumb-active" data-hero-index="0">🌿 Produção agroecológica</button>
-        <button class="hero-thumb" data-hero-index="1">🧺 Feira e venda direta</button>
-        <button class="hero-thumb" data-hero-index="2">🌱 Ervas medicinais e fitoterápicos</button>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- FIM HERO COOPERAFES PREMIUM -->
+  </section>
+  <!-- FIM HERO COOPERAFES PREMIUM -->
 
   <!-- SOBRE -->
   <section class="sobre">
@@ -938,7 +1051,7 @@
     </div>
   </section>
 
-  <!-- PRODUTOS -->
+  <!-- PRODUTOS ORIGINAL (MANTIDO COMO BLOCO ANTIGO) -->
   <!-- BLOCO PRODUTOS ORIGINAL - INÍCIO -->
   <section class="produtos">
     <div class="section-inner">
@@ -1010,64 +1123,66 @@
 
   <!-- SEÇÃO PRODUTOS PREMIUM -->
   <section class="produtos-premium">
-  <div class="produtos-inner">
-    <div class="produtos-header">
-      <span class="section-tag">O QUE PRODUZIMOS</span>
-      <h2>Produtos orgânicos com origem garantida</h2>
-      <p>Da roça à mesa, com cuidado, responsabilidade e respeito à terra e a quem consome.</p>
-      <div class="section-divider"></div>
+    <div class="produtos-inner">
+      <div class="produtos-header">
+        <span class="section-tag">O QUE PRODUZIMOS</span>
+        <h2>Produtos orgânicos com origem garantida</h2>
+        <p>Da roça à mesa, com cuidado, responsabilidade e respeito à terra e a quem consome.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="produtos-grid">
+
+        <div class="produto-card" data-animate>
+          <div class="produto-icon-wrap">🥬</div>
+          <span class="produto-badge">Orgânico</span>
+          <h3>Hortaliças e Verduras</h3>
+          <p>Alface, couve, espinafre, rúcula e muito mais, cultivados sem agrotóxicos e colhidos frescos para garantir o melhor sabor e nutrição.</p>
+        </div>
+
+        <div class="produto-card" data-animate>
+          <div class="produto-icon-wrap">🥕</div>
+          <span class="produto-badge">Orgânico</span>
+          <h3>Legumes e Frutas</h3>
+          <p>Cenoura, beterraba, tomate, abóbora e frutas da estação, produzidos com técnicas de agroecologia que respeitam os ciclos naturais da terra.</p>
+        </div>
+
+        <div class="produto-card" data-animate>
+          <div class="produto-icon-wrap">🌿</div>
+          <span class="produto-badge">Natural</span>
+          <h3>Ervas Medicinais e Fiterápicos</h3>
+          <p>Plantas medicinais cultivadas com técnicas tradicionais e conhecimento popular, promovendo saúde e bem-estar de forma natural.</p>
+        </div>
+
+        <div class="produto-card" data-animate>
+          <div class="produto-icon-wrap">♻️</div>
+          <span class="produto-badge">Sustentável</span>
+          <h3>Agroecologia e Permacultura</h3>
+          <p>Práticas que respeitam os ecossistemas locais, promovem a biodiversidade e garantem a sustentabilidade da produção a longo prazo.</p>
+        </div>
+
+        <div class="produto-card" data-animate>
+          <div class="produto-icon-wrap">🤝</div>
+          <span class="produto-badge">Direto</span>
+          <h3>Venda Direta ao Consumidor</h3>
+          <p>Comercialização presencial que fortalece o vínculo entre quem produz e quem consome, com transparência, confiança e preço justo.</p>
+        </div>
+
+        <div class="produto-card" data-animate>
+          <div class="produto-icon-wrap">🏪</div>
+          <span class="produto-badge">B2B</span>
+          <h3>Fornecimento para Comércio e Indústria</h3>
+          <p>Atendemos comércios, restaurantes e indústrias da região, de Simão Dias até Aracaju, com qualidade certificada e abastecimento regular.</p>
+        </div>
+
+      </div>
     </div>
+  </section>
+  <!-- FIM SEÇÃO PRODUTOS PREMIUM -->
 
-    <div class="produtos-grid">
-
-      <div class="produto-card" data-animate>
-        <div class="produto-icon-wrap">🥬</div>
-        <span class="produto-badge">Orgânico</span>
-        <h3>Hortaliças e Verduras</h3>
-        <p>Alface, couve, espinafre, rúcula e muito mais, cultivados sem agrotóxicos e colhidos frescos para garantir o melhor sabor e nutrição.</p>
-      </div>
-
-      <div class="produto-card" data-animate>
-        <div class="produto-icon-wrap">🥕</div>
-        <span class="produto-badge">Orgânico</span>
-        <h3>Legumes e Frutas</h3>
-        <p>Cenoura, beterraba, tomate, abóbora e frutas da estação, produzidos com técnicas de agroecologia que respeitam os ciclos naturais da terra.</p>
-      </div>
-
-      <div class="produto-card" data-animate>
-        <div class="produto-icon-wrap">🌿</div>
-        <span class="produto-badge">Natural</span>
-        <h3>Ervas Medicinais e Fiterápicos</h3>
-        <p>Plantas medicinais cultivadas com técnicas tradicionais e conhecimento popular, promovendo saúde e bem-estar de forma natural.</p>
-      </div>
-
-      <div class="produto-card" data-animate>
-        <div class="produto-icon-wrap">♻️</div>
-        <span class="produto-badge">Sustentável</span>
-        <h3>Agroecologia e Permacultura</h3>
-        <p>Práticas que respeitam os ecossistemas locais, promovem a biodiversidade e garantem a sustentabilidade da produção a longo prazo.</p>
-      </div>
-
-      <div class="produto-card" data-animate>
-        <div class="produto-icon-wrap">🤝</div>
-        <span class="produto-badge">Direto</span>
-        <h3>Venda Direta ao Consumidor</h3>
-        <p>Comercialização presencial que fortalece o vínculo entre quem produz e quem consome, com transparência, confiança e preço justo.</p>
-      </div>
-
-      <div class="produto-card" data-animate>
-        <div class="produto-icon-wrap">🏪</div>
-        <span class="produto-badge">B2B</span>
-        <h3>Fornecimento para Comércio e Indústria</h3>
-        <p>Atendemos comércios, restaurantes e indústrias da região, de Simão Dias até Aracaju, com qualidade certificada e abastecimento regular.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- FIM SEÇÃO PRODUTOS PREMIUM -->
-
-  <!-- DIFERENCIAIS -->
+  <!-- DIFERENCIAIS (BLOCO ANTIGO COMENTADO) -->
+  <!-- BLOCO ANTIGO: Por que a Cooperafes - INÍCIO -->
+  <!--
   <section class="diferenciais">
     <div class="section-inner">
       <span class="section-tag">Por que a Cooperafes</span>
@@ -1097,6 +1212,52 @@
       </div>
     </div>
   </section>
+  -->
+  <!-- BLOCO ANTIGO: Por que a Cooperafes - FIM -->
+
+  <!-- BLOCO PREMIUM: Por que a Cooperafes - INÍCIO -->
+  <section class="diferenciais-premium">
+    <div class="diferenciais-inner">
+      <div class="diferenciais-header">
+        <span class="section-tag">Por que a Cooperafes</span>
+        <h2>Únicos na região com todos os diferenciais</h2>
+        <p>Somos a única cooperativa da região com todos os requisitos de preservação ambiental e controle de qualidade integralmente cumpridos.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="diferenciais-grid">
+
+        <div class="diferencial-card-premium" data-animate>
+          <div class="diferencial-icon-wrap">🌱</div>
+          <span class="diferencial-badge">Orgânico</span>
+          <h3>100% Orgânico</h3>
+          <p>Produção sem agrotóxicos com controle rigoroso de qualidade em todas as etapas do cultivo.</p>
+        </div>
+
+        <div class="diferencial-card-premium" data-animate>
+          <div class="diferencial-icon-wrap">⚡</div>
+          <span class="diferencial-badge">Sustentável</span>
+          <h3>Energia Sustentável</h3>
+          <p>Produção apoiada por energia limpa e renovável, reduzindo o impacto ambiental da cooperativa.</p>
+        </div>
+
+        <div class="diferencial-card-premium" data-animate>
+          <div class="diferencial-icon-wrap">🤝</div>
+          <span class="diferencial-badge">Solidária</span>
+          <h3>Economia Solidária</h3>
+          <p>Preço justo para quem produz e para quem consome, com distribuição equitativa dos resultados entre os associados.</p>
+        </div>
+
+        <div class="diferencial-card-premium" data-animate>
+          <div class="diferencial-icon-wrap">🏆</div>
+          <span class="diferencial-badge">Certificado</span>
+          <h3>Requisitos Ambientais</h3>
+          <p>Únicos na região com todos os critérios de preservação ambiental e conformidade legal cumpridos.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- BLOCO PREMIUM: Por que a Cooperafes - FIM -->
 
   <!-- PARCEIROS -->
   <section class="parceiros">
@@ -1184,80 +1345,97 @@
   </script>
 
   <script>
-// HERO PREMIUM – slider
-(function () {
-  const slides = Array.from(document.querySelectorAll('.hero-gallery-slide'))
-  const thumbs = Array.from(document.querySelectorAll('.hero-thumb'))
-  const left = document.querySelector('.hero-gallery-arrow-left')
-  const right = document.querySelector('.hero-gallery-arrow-right')
-  if (!slides.length) return
-  let current = 0
-  let intervalId = null
-  function setSlide(index) {
-    current = (index + slides.length) % slides.length
-    slides.forEach((s, i) => s.classList.toggle('hero-gallery-slide-active', i === current))
-    thumbs.forEach((t, i) => t.classList.toggle('hero-thumb-active', i === current))
-  }
-  function next() { setSlide(current + 1) }
-  function prev() { setSlide(current - 1) }
-  function startAuto() { clearInterval(intervalId); intervalId = setInterval(next, 6000) }
-  thumbs.forEach((btn, i) => btn.addEventListener('click', () => { setSlide(i); startAuto() }))
-  if (left) left.addEventListener('click', () => { prev(); startAuto() })
-  if (right) right.addEventListener('click', () => { next(); startAuto() })
-  setSlide(0)
-  startAuto()
-})();
-
-// HERO PREMIUM – contadores
-(function () {
-  const familiasEl = document.getElementById('stat-familias')
-  const anosEl = document.getElementById('stat-anos')
-  const produtosEl = document.getElementById('stat-produtos')
-  if (!familiasEl || !anosEl || !produtosEl) return
-  const targets = { familias: 32, anos: 18, produtos: 15 }
-  const duration = 1600
-  const steps = 60
-  const stepTime = duration / steps
-  const increments = {
-    familias: targets.familias / steps,
-    anos: targets.anos / steps,
-    produtos: targets.produtos / steps,
-  }
-  let current = { familias: 0, anos: 0, produtos: 0 }
-  const timer = setInterval(() => {
-    current.familias = Math.min(targets.familias, current.familias + increments.familias)
-    current.anos = Math.min(targets.anos, current.anos + increments.anos)
-    current.produtos = Math.min(targets.produtos, current.produtos + increments.produtos)
-    familiasEl.textContent = Math.round(current.familias)
-    anosEl.textContent = Math.round(current.anos)
-    produtosEl.textContent = Math.round(current.produtos)
-    if (current.familias >= targets.familias && current.anos >= targets.anos && current.produtos >= targets.produtos) {
-      clearInterval(timer)
-    }
-  }, stepTime)
-})();
-</script>
-
-1000
-
-<script>
-// SEÇÃO PRODUTOS — animação de entrada
-(function () {
-  const cards = document.querySelectorAll('.produto-card[data-animate]');
-  if (!cards.length) return;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 100);
-        observer.unobserve(entry.target);
+    // HERO PREMIUM – slider
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.hero-gallery-slide'));
+      const thumbs = Array.from(document.querySelectorAll('.hero-thumb'));
+      const left = document.querySelector('.hero-gallery-arrow-left');
+      const right = document.querySelector('.hero-gallery-arrow-right');
+      if (!slides.length) return;
+      let current = 0;
+      let intervalId = null;
+      function setSlide(index) {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((s, i) => s.classList.toggle('hero-gallery-slide-active', i === current));
+        thumbs.forEach((t, i) => t.classList.toggle('hero-thumb-active', i === current));
       }
-    });
-  }, { threshold: 0.15 });
-  cards.forEach(card => observer.observe(card));
-})();
-</script>
-</html>
+      function next() { setSlide(current + 1); }
+      function prev() { setSlide(current - 1); }
+      function startAuto() { clearInterval(intervalId); intervalId = setInterval(next, 6000); }
+      thumbs.forEach((btn, i) => btn.addEventListener('click', () => { setSlide(i); startAuto(); }));
+      if (left) left.addEventListener('click', () => { prev(); startAuto(); });
+      if (right) right.addEventListener('click', () => { next(); startAuto(); });
+      setSlide(0);
+      startAuto();
+    })();
 
+    // HERO PREMIUM – contadores
+    (function () {
+      const familiasEl = document.getElementById('stat-familias');
+      const anosEl = document.getElementById('stat-anos');
+      const produtosEl = document.getElementById('stat-produtos');
+      if (!familiasEl || !anosEl || !produtosEl) return;
+      const targets = { familias: 32, anos: 18, produtos: 15 };
+      const duration = 1600;
+      const steps = 60;
+      const stepTime = duration / steps;
+      const increments = {
+        familias: targets.familias / steps,
+        anos: targets.anos / steps,
+        produtos: targets.produtos / steps,
+      };
+      let current = { familias: 0, anos: 0, produtos: 0 };
+      const timer = setInterval(() => {
+        current.familias = Math.min(targets.familias, current.familias + increments.familias);
+        current.anos = Math.min(targets.anos, current.anos + increments.anos);
+        current.produtos = Math.min(targets.produtos, current.produtos + increments.produtos);
+        familiasEl.textContent = Math.round(current.familias);
+        anosEl.textContent = Math.round(current.anos);
+        produtosEl.textContent = Math.round(current.produtos);
+        if (current.familias >= targets.familias &&
+            current.anos >= targets.anos &&
+            current.produtos >= targets.produtos) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    })();
+  </script>
+
+  <script>
+    // SEÇÃO PRODUTOS — animação de entrada
+    (function () {
+      const cards = document.querySelectorAll('.produto-card[data-animate]');
+      if (!cards.length) return;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, i * 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      cards.forEach(card => observer.observe(card));
+    })();
+  </script>
+
+  <script>
+    // Observer — Diferenciais Premium
+    const diferencialCards = document.querySelectorAll('.diferencial-card-premium[data-animate]');
+    const diferencialObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 120);
+          diferencialObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    diferencialCards.forEach(card => diferencialObserver.observe(card));
+  </script>
+
+</body>
+</html>
 <!-- deploy trigger -->
