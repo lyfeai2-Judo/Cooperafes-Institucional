@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contato — Cooperafes Simão Dias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --verde-escuro: #1a4a2e;
+      --verde-medio: #2d7a4f;
+      --verde-claro: #4caf50;
+      --verde-suave: #e8f5e9;
+      --branco: #ffffff;
+      --cinza-claro: #f5f5f5;
+      --cinza-texto: #555;
+      --preto-suave: #1a1a1a;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--preto-suave);
+      background: var(--branco);
+    }
+
+    /* HEADER (mesmo padrão do site) */
+    header {
+      background: var(--verde-escuro);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-texto {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-texto span:first-child {
+      color: var(--branco);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo-texto span:last-child {
+      color: #a5d6a7;
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    nav a {
+      color: #c8e6c9;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--branco);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--branco);
+      border-radius: 2px;
+    }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+      nav.aberto {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--verde-escuro);
+        padding: 16px;
+      }
+      .menu-toggle { display: flex; }
+    }
+
+    /* SEÇÕES GERAIS */
+    section {
+      padding: 80px 24px;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      color: var(--verde-medio);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-titulo {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--cinza-texto);
+      line-height: 1.8;
+      max-width: 640px;
+    }
+
+    /* HERO CONTATO */
+    .hero-contato {
+      background: linear-gradient(135deg, var(--verde-escuro), var(--verde-medio));
+      color: var(--branco);
+      padding: 96px 24px 72px;
+    }
+
+    .hero-contato-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-contato .section-tag {
+      color: #c8e6c9;
+    }
+
+    .hero-contato h1 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero-contato p {
+      font-size: 18px;
+      color: #e0f2f1;
+      max-width: 640px;
+      line-height: 1.8;
+    }
+
+    .hero-contato-info {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #c8e6c9;
+    }
+
+    /* GRID CONTATO */
+    .contato-bloco {
+      background: var(--branco);
+    }
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1.1fr;
+      gap: 48px;
+      margin-top: 40px;
+      align-items: flex-start;
+    }
+
+    /* COLUNA ESQUERDA – FORM */
+    .contato-form-box {
+      background: var(--cinza-claro);
+      border-radius: 16px;
+      padding: 28px 24px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .contato-form-box h2 {
+      font-size: 22px;
+      color: var(--verde-escuro);
+      margin-bottom: 10px;
+    }
+
+    .contato-form-box p {
+      font-size: 14px;
+      color: var(--cinza-texto);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--verde-escuro);
+      margin-bottom: 4px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #d0d0d0;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--preto-suave);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--verde-medio);
+      box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.15);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contato-obs {
+      font-size: 12px;
+      color: var(--cinza-texto);
+      margin-top: 4px;
+    }
+
+    .btn-primary {
+      background: var(--verde-medio);
+      color: var(--branco);
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      align-self: flex-start;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+    }
+
+    /* COLUNA DIREITA – DADOS */
+    .contato-dados {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .contato-card {
+      background: var(--cinza-claro);
+      border-radius: 14px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .contato-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      margin-bottom: 4px;
+    }
+
+    .contato-card p {
+      font-size: 14px;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    .contato-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--verde-medio);
+      margin-bottom: 4px;
+    }
+
+    .contato-info-linha {
+      font-size: 14px;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    .contato-info-linha strong {
+      color: var(--verde-escuro);
+    }
+
+    /* CTA WHATS/TELEFONE */
+    .contato-cta-final {
+      background: var(--cinza-claro);
+      margin-top: 40px;
+      border-radius: 14px;
+      padding: 18px 20px;
+      border: 1px solid rgba(0,0,0,0.06);
+      font-size: 14px;
+      color: var(--cinza-texto);
+    }
+
+    .contato-cta-final strong {
+      color: var(--verde-escuro);
+    }
+
+    /* FOOTER (igual site) */
+    footer {
+      background: #0f2d1c;
+      padding: 60px 24px 30px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      color: #81c784;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .footer-logo-txt {
+      color: var(--branco);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .footer-col h5 {
+      color: var(--branco);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .footer-col a, .footer-col p {
+      display: block;
+      color: #81c784;
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      line-height: 1.6;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--branco); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      color: #4caf50;
+      font-size: 13px;
+    }
+
+    .footer-missao {
+      color: #4caf50;
+      font-size: 13px;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .contato-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 64px 20px; }
+      .hero-contato { padding: 80px 20px 56px; }
+      .hero-contato h1 { font-size: 30px; }
+      .section-titulo { font-size: 26px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-area">
+        <div class="logo-texto">
+          <span>COOPERAFES</span>
+          <span>Simão Dias — Sergipe</span>
+        </div>
+      </a>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="parceiros.html">Parceiros</a>
+        <a href="livros.html">Livros</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO CONTATO -->
+  <section class="hero-contato">
+    <div class="hero-contato-inner">
+      <span class="section-tag">Contato</span>
+      <h1>Fale com a Cooperafes</h1>
+      <p>
+        Use os canais abaixo para falar com a cooperativa, tirar dúvidas, propor parcerias
+        ou solicitar informações sobre produtos e fornecimento.
+      </p>
+      <p class="hero-contato-info">
+        Atendemos de domingo a sábado, das 08h às 17h.
+      </p>
+    </div>
+  </section>
+
+  <!-- BLOCO CONTATO -->
+  <section class="contato-bloco">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-tag">Canais oficiais</span>
+        <h2 class="section-titulo">Entre em contato com a Cooperafes</h2>
+        <p class="section-desc">
+          Escolha a forma de contato que for melhor para você. Respondemos com atenção
+          e cuidado, porque cada conversa é uma oportunidade de fortalecer a agricultura familiar.
+        </p>
+      </div>
+
+      <div class="contato-grid">
+        <!-- FORMULÁRIO -->
+        <div class="contato-form-box">
+          <h2>Envie uma mensagem</h2>
+          <p>
+            Preencha os dados abaixo e envie sua mensagem. Seu e-mail será aberto no seu
+            programa de e-mail padrão com o conteúdo preenchido.
+          </p>
+
+          <form action="mailto:cooperafescooperativa@gmail.com" method="post" enctype="text/plain">
+            <div>
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="Nome" placeholder="Seu nome completo" required>
+            </div>
+
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="Email" placeholder="seuemail@exemplo.com" required>
+            </div>
+
+            <div>
+              <label for="assunto">Assunto</label>
+              <input type="text" id="assunto" name="Assunto" placeholder="Parceria, compra, informação..." required>
+            </div>
+
+            <div>
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="Mensagem" placeholder="Conte como podemos ajudar" required></textarea>
+              <p class="contato-obs">
+                Ao clicar em enviar, será aberto o seu aplicativo de e-mail com a mensagem pronta
+                para ser confirmada.
+              </p>
+            </div>
+
+            <button type="submit" class="btn-primary">Enviar mensagem</button>
+          </form>
+        </div>
+
+        <!-- DADOS DE CONTATO -->
+        <div class="contato-dados">
+
+          <div class="contato-card">
+            <div class="contato-label">E-mail</div>
+            <h3>Canal principal</h3>
+            <p class="contato-info-linha">
+              <strong>📧 cooperafescooperativa@gmail.com</strong>
+            </p>
+          </div>
+
+          <div class="contato-card">
+            <div class="contato-label">Telefone / WhatsApp</div>
+            <h3>Atendimento Cooperafes</h3>
+            <p class="contato-info-linha">
+              <strong>📞 (79) 99672-2419</strong>
+            </p>
+            <p class="contato-info-linha">
+              Horário: domingo a sábado, das 08h às 17h.
+            </p>
+          </div>
+
+          <div class="contato-card">
+            <div class="contato-label">Endereço Simão Dias</div>
+            <h3>Sede da Cooperafes</h3>
+            <p class="contato-info-linha">
+              📍 Travessa Coronel Loyola, 76 — Simão Dias, SE
+            </p>
+          </div>
+
+          <div class="contato-card">
+            <div class="contato-label">Unidade Aracaju</div>
+            <h3>Loja Centro de Aracaju</h3>
+            <p class="contato-info-linha">
+              📍 Rua Propriá, 570 — Centro, Aracaju, Sergipe
+            </p>
+            <p class="contato-info-linha">
+              A loja física em Aracaju aproxima ainda mais a produção da Cooperafes de quem
+              vive na capital.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="contato-cta-final">
+        <strong>Observação:</strong> por enquanto, nosso formulário abre o seu e-mail para envio
+        da mensagem. Se preferir, pode escrever diretamente para
+        <strong>cooperafescooperativa@gmail.com</strong> ou falar pelo telefone/WhatsApp informado.
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-txt">COOPERAFES</div>
+          <p>Cooperativa da Agricultura Familiar e Economia Solidária do Município de Simão Dias — produzindo alimentos saudáveis desde 2007 com cooperação, sustentabilidade e respeito à terra.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre nós</a>
+          <a href="galeria.html">Galeria</a>
+          <a href="parceiros.html">Parceiros</a>
+          <a href="livros.html">Livros</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contato</h5>
+          <p>📧 cooperafescooperativa@gmail.com</p>
+          <p>📍 Travessa Coronel Loyola, 76 — Simão Dias, SE</p>
+          <p>🕐 Dom a Sáb · 08h às 17h</p>
+        </div>
+        <div class="footer-col">
+          <h5>Redes Sociais</h5>
+          <a href="https://www.facebook.com/profile.php?id=61587064174915" target="_blank" rel="noopener">📘 Facebook</a>
+          <a href="https://www.instagram.com/cooperafescooperativa" target="_blank" rel="noopener">📸 Instagram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Cooperafes — Todos os direitos reservados</p>
+        <p class="footer-missao">"Viver bem e com saúde"</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('main-nav');
+      nav.classList.toggle('aberto');
+    }
+  </script>
+</body>
+</html>
